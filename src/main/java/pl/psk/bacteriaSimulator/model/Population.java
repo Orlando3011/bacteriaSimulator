@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Population {
-    private Bacteria firstGeneration;
-    private List<Bacteria> allBacteria;
-    private int timer;
-    private int simulationLength;
+    private Bacteria bacteria;
     private Environment environment;
+    private int simulationLength;
+    private int timer;
+
+    private List<Bacteria> allBacteria;
 
 
-    public Population(Bacteria firstGeneration, Environment environment) {
+
+
+
+    public Population(Bacteria bacteria, Environment environment) {
         allBacteria = new ArrayList<>();
-        this.firstGeneration = firstGeneration;
+        this.bacteria = bacteria;
         this.environment = environment;
     }
 
@@ -67,11 +71,11 @@ public class Population {
         this.simulationLength = simulationLength;
     }
 
-    public Bacteria getFirstGeneration() {
-        return firstGeneration;
+    public Bacteria getBacteria() {
+        return bacteria;
     }
 
-    public void setFirstGeneration(Bacteria firstGeneration) {
-        this.firstGeneration = firstGeneration;
+    public void setBacteria(Bacteria bacteria) {
+        this.bacteria = bacteria;
     }
 }

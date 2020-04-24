@@ -25,6 +25,7 @@ public class FormController {
 
     @PostMapping("/form")
     public String showSimulationResults(@ModelAttribute("population") Population population) {
-        return "redirect:/results";
+        System.out.println(population.getBacteria().getName());
+        return "results";
     }
 }

@@ -9,5 +9,130 @@
 <body>
 <div th:insert="header"></div>
 
+<section class="py-5">
+    <div class="container">
+        <h2 class="font-weight-light"><br/>Dane do symulacji</h2>
+        <form class='needs-validation' th:object="${population}" method="post" action="#" novalidate>
+            <div class="form-row">
+                <br/>
+                <h3 class="font-weight-light"><br/>Bakteria - podstawowe dane</h3>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.name">Nazwa bakterii</label>
+                <input type="text" id="bacteria.name" name="bacteria.name" th:field="*{bacteria.name}" class="form-control" placeholder="E. Coli" required>
+                <div class="invalid-feedback">Pole wymagane</div>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.number">Wielkość początkowej populacji</label>
+                <input type="number" id="bacteria.number" name="bacteria.number" th:field="*{bacteria.number}" class="form-control" placeholder="100" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.reproductionTime">Czas pomiędzy podziałami osobnika</label>
+                <input type="number" id="bacteria.reproductionTime" name="bacteria.reproductionTime" th:field="*{bacteria.reproductionTime}" class="form-control" placeholder="5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.lifeSpan">Czas życia osobnika</label>
+                <input type="number" id="bacteria.lifeSpan" name="bacteria.lifeSpan" th:field="*{bacteria.lifeSpan}" class="form-control" placeholder="10" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.mutationChance">Szansa na mutację w generacji (0 = brak mutacji, 1 = mutacja w każdej generacji)</label>
+                <input type="number" id="bacteria.mutationChance" name="bacteria.mutationChance" th:field="*{bacteria.mutationChance}" class="form-control" placeholder="0" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.optimalTemperature">Optymalna temperatura dla populacji</label>
+                <input type="number" id="bacteria.optimalTemperature" name="bacteria.optimalTemperature" th:field="*{bacteria.optimalTemperature}" class="form-control" placeholder="21" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+
+                <h3 class="font-weight-light"><br/>Bakteria - tolerancja na czynniki środowiska</h3>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.temperatureTolerance">Tolerancja temperatury (0 = brak tolerancji, 1 = brak wpływu temperatury na populację)</label>
+                <input type="number" id="bacteria.temperatureTolerance" name="bacteria.temperatureTolerance" th:field="*{bacteria.temperatureTolerance}" class="form-control" placeholder="0.5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.toxicityTolerance">Tolerancja toksyn (0 = brak tolerancji, 1 = brak wpływu toksyczności na populację)</label>
+                <input type="number" id="bacteria.toxicityTolerance" name="bacteria.toxicityTolerance" th:field="*{bacteria.toxicityTolerance}" class="form-control" placeholder="0.5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="bacteria.foodTolerance">Tolerancja braku pożywienia (0 = brak tolerancji, 1 = brak wpływu braku pożywienia na populację)</label>
+                <input type="number" id="bacteria.foodTolerance" name="bacteria.foodTolerance" th:field="*{bacteria.foodTolerance}" class="form-control" placeholder="0.5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <h3 class="font-weight-light"><br/>Otoczenie</h3>
+            </div>
+
+            <div class="form-row">
+                <label for="environment.temperature">Temperatura otoczenia</label>
+                <input type="number" id="environment.temperature" name="environment.temperature" th:field="*{environment.temperature}" class="form-control" placeholder="0.5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="environment.toxicity">Toksyczność otoczenia (0 = brak antybiotyków, 1 = środowisko zabójcze dla bakterii)</label>
+                <input type="number" id="environment.toxicity" name="environment.toxicity" th:field="*{environment.toxicity}" class="form-control" placeholder="0.5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <label for="environment.foodAccessibility">Dostępność pożywienia (0 = brak pożywienia, 1 = optymalna ilość pożywienia)</label>
+                <input type="number" id="environment.foodAccessibility" name="environment.foodAccessibility" th:field="*{environment.foodAccessibility}" class="form-control" placeholder="0.5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="form-row">
+                <h3 class="font-weight-light"><br/>Czas</h3>
+            </div>
+
+            <div class="form-row">
+                <label for="simulationLength">Czas trwania symulacji (ilość kroków)</label>
+                <input type="number" id="simulationLength" name="simulationLength" th:field="*{simulationLength}" class="form-control" placeholder="0.5" required>
+                <div class="invalid-feedback">Niepoprawna wartość</div>
+            </div>
+
+            <div class="col-sm-10">
+                <br /><button type="submit" class="btn btn-primary">Przeprowadź symulację!</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 </body>
 </html>
