@@ -41,4 +41,13 @@ public class PopulationService {
         }
         return populationSize;
     }
+
+
+    public Population getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(Population population) {
+        this.population = population;
+    }
 }

@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
+    <link rel=“stylesheet” type="text/css" href=“style.css” >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>home</title>
+    <style>
+        .masthead {
+            height: 100vh;
+            min-height: 500px;
+            background-image: url('https://cdn.cancercenter.com/-/media/ctca/images/others/blogs/2019/05-may/03-blog-bacteria-l.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color:white;
+        }
+    </style>
 </head>
 <body>
-Just text homepage
+<div th:insert="header"></div>
+
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h1 class="font-weight-bold">Symulacja Komputerowa</h1>
+                <p class="font-weight-bold">Informatyka, studia stacjonarne II stopnia</p>
+                <p class="font-weight-bold">Autor: Michał Wąsik, 2ID22B</p>
+                <p class="font-weight-bold">Prowadzący: dr inż. Andrzej Kułakowski</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="font-weight-light">Symulacja populacji bakterii</h2>
+        <p>
+            Program służy do przeprowadzania symulacji rozwoju populacji bakterii.
+            Użytkownik może ustawiać parametry samej bakterii, jak i środowiska w której żyje.
+            Następnie może obserwować zmiany liczebności populacji w czasie.
+        </p>
+        <p>
+            Aplikacja jest pracą zaliczeniową z przedmiotu Symulacja Komputerowa.
+        </p>
+    </div>
+</section>
 </body>
 </html>
