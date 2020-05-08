@@ -11,8 +11,11 @@ import pl.psk.bacteriaSimulator.model.Environment;
 import pl.psk.bacteriaSimulator.model.Population;
 import pl.psk.bacteriaSimulator.service.PopulationService;
 
+import java.io.IOException;
+
 @Controller
 public class FormController {
+    private final String chartPath = System.getProperty("user.home") + "\\Downloads\\chart.png";
     @Autowired
     PopulationService populationService;
 
@@ -24,8 +27,13 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String showSimulationResults(@ModelAttribute("population") Population population) {
-        System.out.println(population.getBacteria().getName());
+    public String showSimulationResults(@ModelAttribute("population") Population population, Model model) throws IOException {
+        populationService.initializePopulation(population);
+        populationService.runSimulation();
+        model.addAttribute("steps", populationService.getSteps());
+        if(populationService.getSteps().size() > 0)
+            model.addAttribute("finalCount", populationService.getSteps().get(populationService.getSteps().size() - 1));
+        else model.addAttribute("finalCount", 0);
         return "results";
     }
 }

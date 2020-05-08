@@ -11,10 +11,6 @@ public class Population {
 
     private List<Bacteria> allBacteria;
 
-
-
-
-
     public Population(Bacteria bacteria, Environment environment) {
         allBacteria = new ArrayList<>();
         this.bacteria = bacteria;

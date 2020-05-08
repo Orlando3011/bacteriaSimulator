@@ -5,10 +5,191 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>results</title>
+    <style>
+        .h-100 {
+            height: 100vh;
+            min-height: 700px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/93/Agar_plate_with_colonies.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color:white;
+        }
+    </style>
 </head>
 <body>
 
 <div th:insert="header"></div>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <form th:object="${population}">
+                    <div class="form-row">
+                        <br/>
+                        <h3 class="font-weight-light"><br/>Bakteria - podstawowe dane</h3>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.name" class="col-sm-2 col-form-label">Nazwa bakterii</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.name" name="bacteria.name" th:field="*{bacteria.name}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.number" class="col-sm-2 col-form-label">Wielkość początkowej populacji</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.number" name="bacteria.number" th:field="*{bacteria.number}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.reproductionTime" class="col-sm-2 col-form-label">Czas pomiędzy podziałami osobnika</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.reproductionTime" name="bacteria.reproductionTime" th:field="*{bacteria.reproductionTime}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.lifeSpan" class="col-sm-2 col-form-label">Czas życia osobnika</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.lifeSpan" name="bacteria.lifeSpan" th:field="*{bacteria.lifeSpan}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                        <label for="bacteria.mutationChance" class="col-sm-2 col-form-label">Szansa na mutację</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.mutationChance" name="bacteria.mutationChance" th:field="*{bacteria.mutationChance}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.optimalTemperature" class="col-sm-2 col-form-label">Optymalna temperatura</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.optimalTemperature" name="bacteria.optimalTemperature" th:field="*{bacteria.optimalTemperature}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <h3 class="font-weight-light"><br/>Bakteria - tolerancja na czynniki środowiska</h3>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.temperatureTolerance" class="col-sm-2 col-form-label">Tolerancja temperatury</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.temperatureTolerance" name="bacteria.temperatureTolerance" th:field="*{bacteria.temperatureTolerance}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.toxicityTolerance" class="col-sm-2 col-form-label">Tolerancja toksyn</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.toxicityTolerance" name="bacteria.toxicityTolerance" th:field="*{bacteria.toxicityTolerance}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="bacteria.foodTolerance" class="col-sm-2 col-form-label">Tolerancja braku pożywienia</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="bacteria.foodTolerance" name="bacteria.foodTolerance" th:field="*{bacteria.foodTolerance}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <h3 class="font-weight-light"><br/>Otoczenie</h3>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="environment.temperature" class="col-sm-2 col-form-label">Temperatura otoczenia</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="environment.temperature" name="environment.temperature" th:field="*{environment.temperature}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="environment.toxicity" class="col-sm-2 col-form-label">Toksyczność otoczenia</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="environment.toxicity" name="environment.toxicity" th:field="*{environment.toxicity}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="environment.foodAccessibility" class="col-sm-2 col-form-label">Dostępność pożywienia</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="environment.foodAccessibility" name="environment.foodAccessibility" th:field="*{environment.foodAccessibility}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <h3 class="font-weight-light"><br/>Czas</h3>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="simulationLength" class="col-sm-2 col-form-label">Czas</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control-plaintext" id="simulationLength" name="simulationLength" th:field="*{simulationLength}" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <br/><br/><br/>
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"> Liczebość populacji </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${steps}">
+                        <td><span th:text="${item}"> Liczebość populacji </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 text-center">
+                        <h1 class="font-weight-bold">Liczebność populacji</h1>
+                        <h1 class="font-weight-bold">w ostatnim pokoleniu</h1>
+                        <h1 class="font-weight-bold" th:text="${finalCount}"></h1>
+                        <h1 class="font-weight-bold">osobników</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
 
 </body>
 </html>
