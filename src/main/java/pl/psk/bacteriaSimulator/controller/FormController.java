@@ -31,6 +31,10 @@ public class FormController {
         populationService.initializePopulation(population);
         populationService.runSimulation();
         model.addAttribute("steps", populationService.getSteps());
+
+        model.addAttribute("toxicityDeaths", populationService.getPopulation().getToxicityCausalities());
+        model.addAttribute("temperatureDeaths", populationService.getPopulation().getTemperatureCausalities());
+        model.addAttribute("foodDeaths", populationService.getPopulation().getFoodCausalities());
         if(populationService.getSteps().size() > 0)
             model.addAttribute("finalCount", populationService.getSteps().get(populationService.getSteps().size() - 1));
         else model.addAttribute("finalCount", 0);

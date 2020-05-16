@@ -43,14 +43,8 @@
             </div>
 
             <div class="form-row">
-                <label for="bacteria.mutationChance">Szansa na mutację w generacji (0 = brak mutacji, 1 = mutacja w każdej generacji)</label>
-                <input type="number" id="bacteria.mutationChance" name="bacteria.mutationChance" th:field="*{bacteria.mutationChance}" class="form-control" placeholder="0" required>
-                <div class="invalid-feedback">Niepoprawna wartość</div>
-            </div>
-
-            <div class="form-row">
-                <label for="bacteria.optimalTemperature">Optymalna temperatura dla populacji</label>
-                <input type="number" id="bacteria.optimalTemperature" name="bacteria.optimalTemperature" th:field="*{bacteria.optimalTemperature}" class="form-control" placeholder="21" required>
+                <label for="bacteria.optimalTemperature">Optymalna temperatura dla populacji (W Kelwinach)</label>
+                <input type="number" step="0.01" id="bacteria.optimalTemperature" name="bacteria.optimalTemperature" th:field="*{bacteria.optimalTemperature}" class="form-control" placeholder="21" required>
                 <div class="invalid-feedback">Niepoprawna wartość</div>
             </div>
 
@@ -61,19 +55,19 @@
 
             <div class="form-row">
                 <label for="bacteria.temperatureTolerance">Tolerancja temperatury (0 = brak tolerancji, 1 = brak wpływu temperatury na populację)</label>
-                <input type="number" id="bacteria.temperatureTolerance" name="bacteria.temperatureTolerance" th:field="*{bacteria.temperatureTolerance}" class="form-control" placeholder="0.5" required>
+                <input type="number" step="0.01" id="bacteria.temperatureTolerance" name="bacteria.temperatureTolerance" th:field="*{bacteria.temperatureTolerance}" class="form-control" placeholder="0.5" required>
                 <div class="invalid-feedback">Niepoprawna wartość</div>
             </div>
 
             <div class="form-row">
                 <label for="bacteria.toxicityTolerance">Tolerancja toksyn (0 = brak tolerancji, 1 = brak wpływu toksyczności na populację)</label>
-                <input type="number" id="bacteria.toxicityTolerance" name="bacteria.toxicityTolerance" th:field="*{bacteria.toxicityTolerance}" class="form-control" placeholder="0.5" required>
+                <input type="number" step="0.01" id="bacteria.toxicityTolerance" name="bacteria.toxicityTolerance" th:field="*{bacteria.toxicityTolerance}" class="form-control" placeholder="0.5" required>
                 <div class="invalid-feedback">Niepoprawna wartość</div>
             </div>
 
             <div class="form-row">
                 <label for="bacteria.foodTolerance">Tolerancja braku pożywienia (0 = brak tolerancji, 1 = brak wpływu braku pożywienia na populację)</label>
-                <input type="number" id="bacteria.foodTolerance" name="bacteria.foodTolerance" th:field="*{bacteria.foodTolerance}" class="form-control" placeholder="0.5" required>
+                <input type="number" step="0.01" id="bacteria.foodTolerance" name="bacteria.foodTolerance" th:field="*{bacteria.foodTolerance}" class="form-control" placeholder="0.5" required>
                 <div class="invalid-feedback">Niepoprawna wartość</div>
             </div>
 
@@ -82,20 +76,20 @@
             </div>
 
             <div class="form-row">
-                <label for="environment.temperature">Temperatura otoczenia</label>
-                <input type="number" id="environment.temperature" name="environment.temperature" th:field="*{environment.temperature}" class="form-control" placeholder="0.5" required>
+                <label for="environment.temperature">Temperatura otoczenia (W Kelwinach)</label>
+                <input type="number" step="0.01" id="environment.temperature" name="environment.temperature" th:field="*{environment.temperature}" class="form-control" placeholder="0.5" required>
                 <div class="invalid-feedback">Niepoprawna wartość</div>
             </div>
 
             <div class="form-row">
                 <label for="environment.toxicity">Toksyczność otoczenia (0 = brak antybiotyków, 1 = środowisko zabójcze dla bakterii)</label>
-                <input type="number" id="environment.toxicity" name="environment.toxicity" th:field="*{environment.toxicity}" class="form-control" placeholder="0.5" required>
+                <input type="number" step="0.01" id="environment.toxicity" name="environment.toxicity" th:field="*{environment.toxicity}" class="form-control" placeholder="0.5" required>
                 <div class="invalid-feedback">Niepoprawna wartość</div>
             </div>
 
             <div class="form-row">
                 <label for="environment.foodAccessibility">Dostępność pożywienia (0 = brak pożywienia, 1 = optymalna ilość pożywienia)</label>
-                <input type="number" id="environment.foodAccessibility" name="environment.foodAccessibility" th:field="*{environment.foodAccessibility}" class="form-control" placeholder="0.5" required>
+                <input type="number" step="0.01" id="environment.foodAccessibility" name="environment.foodAccessibility" th:field="*{environment.foodAccessibility}" class="form-control" placeholder="0.5" required>
                 <div class="invalid-feedback">Niepoprawna wartość</div>
             </div>
 

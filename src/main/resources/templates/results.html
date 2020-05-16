@@ -69,15 +69,6 @@
 
                     <div class="form-group row">
                         <div class="col-sm-6">
-                        <label for="bacteria.mutationChance" class="col-sm-2 col-form-label">Szansa na mutację</label>
-                        </div>
-                        <div class="col-sm-4">
-                            <input class="form-control-plaintext" id="bacteria.mutationChance" name="bacteria.mutationChance" th:field="*{bacteria.mutationChance}" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-6">
                             <label for="bacteria.optimalTemperature" class="col-sm-2 col-form-label">Optymalna temperatura</label>
                         </div>
                         <div class="col-sm-4">
@@ -181,10 +172,14 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12 text-center">
-                        <h1 class="font-weight-bold">Liczebność populacji</h1>
-                        <h1 class="font-weight-bold">w ostatnim pokoleniu</h1>
-                        <h1 class="font-weight-bold" th:text="${finalCount}"></h1>
-                        <h1 class="font-weight-bold">osobników</h1>
+                        <h2 class="font-weight-bold">Liczebność populacji w ostatnim pokoleniu</h2>
+                        <h2 class="font-weight-bold" th:text="${finalCount}"></h2>
+                        <h2 class="font-weight-bold">Ofiary toksyczności</h2>
+                        <h2 class="font-weight-bold" th:text="${toxicityDeaths}"></h2>
+                        <h2 class="font-weight-bold">Ofiary niedpowiedniej temperatury</h2>
+                        <h2 class="font-weight-bold" th:text="${temperatureDeaths}"></h2>
+                        <h2 class="font-weight-bold">Ofiary braku pożywienia</h2>
+                        <h2 class="font-weight-bold" th:text="${foodDeaths}"></h2>
                     </div>
                 </div>
             </div>

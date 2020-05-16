@@ -8,11 +8,17 @@ public class Population {
     private Environment environment;
     private int simulationLength;
     private int timer;
+    private int toxicityCausalities;
+    private int temperatureCausalities;
+    private int foodCausalities;
 
     private List<Bacteria> allBacteria;
 
     public Population(Bacteria bacteria, Environment environment) {
         allBacteria = new ArrayList<>();
+        toxicityCausalities = 0;
+        temperatureCausalities = 0;
+        foodCausalities = 0;
         this.bacteria = bacteria;
         this.environment = environment;
     }
@@ -21,13 +27,51 @@ public class Population {
         allBacteria.removeIf(bacteria -> (bacteria.getLifeLength() == bacteria.getLifeSpan()));
     }
 
+    private void removeToxicityCausalities() {
+        double impact = 1 - bacteria.getToxicityTolerance();
+        double deathPercent = environment.getToxicity() * impact;
+        for (Bacteria bacteria:allBacteria) {
+            int deaths = (int)(bacteria.getNumber() * deathPercent);
+            int survived = bacteria.getNumber() - deaths;
+            toxicityCausalities = toxicityCausalities + deaths;
+            bacteria.setNumber(survived);
+        }
+    }
+
+    private void removeTemperatureCausalities() {
+        double temperatureDifference = bacteria.getOptimalTemperature() - environment.getTemperature();
+        if(temperatureDifference < 0) temperatureDifference = -temperatureDifference;
+        if (temperatureDifference < 100) temperatureDifference = temperatureDifference / 100;
+        else temperatureDifference = 1;
+        double impact = 1 - bacteria.getTemperatureTolerance();
+        double deathPercent = temperatureDifference * impact;
+        for (Bacteria bacteria:allBacteria) {
+            int deaths = (int)(bacteria.getNumber() * deathPercent);
+            int survived = bacteria.getNumber() - deaths;
+            temperatureCausalities = temperatureCausalities + deaths;
+            bacteria.setNumber(survived);
+        }
+    }
+
+    private void removeFoodCausalities(Bacteria bacteria) {
+        double impact = 1 - bacteria.getFoodTolerance();
+        double deathPercent = (1 - environment.getFoodAccessibility()) * impact;
+        int finalPopulation = (int)(bacteria.getNumber() * deathPercent);
+        foodCausalities = foodCausalities + (int)(bacteria.getNumber() * deathPercent);
+        bacteria.setNumber(finalPopulation);
+    }
+
     public void goToNextStep() {
+        removeToxicityCausalities();
+        removeTemperatureCausalities();
         List<Bacteria> newGenerations = new  ArrayList<>();
             for (Bacteria bacteria : allBacteria) {
                 bacteria.setLifeLength(bacteria.getLifeLength() + 1);
                 bacteria.setToNextReproduction(bacteria.getToNextReproduction() - 1);
                 if(bacteria.getToNextReproduction() == 0) {
-                    newGenerations.add(bacteria.multiply());
+                    Bacteria bacteria1 = bacteria.multiply();
+                    removeFoodCausalities(bacteria1);
+                    newGenerations.add(bacteria1);
                     bacteria.setToNextReproduction(bacteria.getReproductionTime());
                 }
             }
@@ -73,5 +117,29 @@ public class Population {
 
     public void setBacteria(Bacteria bacteria) {
         this.bacteria = bacteria;
+    }
+
+    public int getToxicityCausalities() {
+        return toxicityCausalities;
+    }
+
+    public void setToxicityCausalities(int toxicityCausalities) {
+        this.toxicityCausalities = toxicityCausalities;
+    }
+
+    public int getTemperatureCausalities() {
+        return temperatureCausalities;
+    }
+
+    public void setTemperatureCausalities(int temperatureCausalities) {
+        this.temperatureCausalities = temperatureCausalities;
+    }
+
+    public int getFoodCausalities() {
+        return foodCausalities;
+    }
+
+    public void setFoodCausalities(int foodCausalities) {
+        this.foodCausalities = foodCausalities;
     }
 }

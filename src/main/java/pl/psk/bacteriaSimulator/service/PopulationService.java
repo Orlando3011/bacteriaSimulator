@@ -2,6 +2,7 @@ package pl.psk.bacteriaSimulator.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.view.BeanNameViewResolver;
 import pl.psk.bacteriaSimulator.model.Bacteria;
 import pl.psk.bacteriaSimulator.model.Population;
 

@@ -10,8 +10,6 @@ public class Bacteria {
     private int lifeSpan;
     private int lifeLength;
 
-    private int mutationChance;
-
     private int generation;
 
     private double optimalTemperature;
@@ -32,8 +30,6 @@ public class Bacteria {
 
         newInstance.setLifeLength(0);
         newInstance.setLifeSpan(lifeSpan);
-
-        newInstance.setMutationChance(mutationChance);
 
         newInstance.setGeneration(generation + 1);
 
@@ -68,14 +64,6 @@ public class Bacteria {
 
     public void setLifeLength(int lifeLength) {
         this.lifeLength = lifeLength;
-    }
-
-    public int getMutationChance() {
-        return mutationChance;
-    }
-
-    public void setMutationChance(int mutationChance) {
-        this.mutationChance = mutationChance;
     }
 
     public int getGeneration() {
