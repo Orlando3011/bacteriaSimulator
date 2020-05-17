@@ -21,6 +21,7 @@ public class PopulationService {
         this.population = entryPopulation;
         population.getBacteria().setLifeLength(0);
         population.getBacteria().setToNextReproduction(population.getBacteria().getReproductionTime());
+        population.getBacteria().setInitialNumber(population.getBacteria().getNumber());
         population.getAllBacteria().add(population.getBacteria());
         population.setTimer(0);
         steps = new ArrayList<>();

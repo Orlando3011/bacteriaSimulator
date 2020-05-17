@@ -3,6 +3,7 @@ package pl.psk.bacteriaSimulator.model;
 public class Bacteria {
     private String name;
     private int number;
+    private int initialNumber;
 
     private int reproductionTime;
     private int toNextReproduction;
@@ -128,5 +129,13 @@ public class Bacteria {
 
     public void setLifeSpan(int lifeSpan) {
         this.lifeSpan = lifeSpan;
+    }
+
+    public int getInitialNumber() {
+        return initialNumber;
+    }
+
+    public void setInitialNumber(int initialNumber) {
+        this.initialNumber = initialNumber;
     }
 }

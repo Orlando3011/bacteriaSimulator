@@ -32,9 +32,11 @@ public class Population {
         double deathPercent = environment.getToxicity() * impact;
         for (Bacteria bacteria:allBacteria) {
             int deaths = (int)(bacteria.getNumber() * deathPercent);
+            if(deathPercent > 0 && deaths == 0) deaths = 1;
             int survived = bacteria.getNumber() - deaths;
             toxicityCausalities = toxicityCausalities + deaths;
             bacteria.setNumber(survived);
+            if(bacteria.getNumber() < 0) bacteria.setNumber(0);
         }
     }
 
@@ -47,18 +49,23 @@ public class Population {
         double deathPercent = temperatureDifference * impact;
         for (Bacteria bacteria:allBacteria) {
             int deaths = (int)(bacteria.getNumber() * deathPercent);
+            if(deathPercent > 0 && deaths == 0) deaths = 1;
             int survived = bacteria.getNumber() - deaths;
             temperatureCausalities = temperatureCausalities + deaths;
             bacteria.setNumber(survived);
+            if(bacteria.getNumber() < 0) bacteria.setNumber(0);
         }
     }
 
     private void removeFoodCausalities(Bacteria bacteria) {
         double impact = 1 - bacteria.getFoodTolerance();
         double deathPercent = (1 - environment.getFoodAccessibility()) * impact;
-        int finalPopulation = (int)(bacteria.getNumber() * deathPercent);
+        int finalPopulation = bacteria.getNumber() - (int)(bacteria.getNumber() * deathPercent);
+        if(deathPercent > 0 && (int)(bacteria.getNumber() * deathPercent) == 0) finalPopulation = finalPopulation - 1;
+
         foodCausalities = foodCausalities + (int)(bacteria.getNumber() * deathPercent);
         bacteria.setNumber(finalPopulation);
+        if(bacteria.getNumber() < 0) bacteria.setNumber(0);
     }
 
     public void goToNextStep() {
