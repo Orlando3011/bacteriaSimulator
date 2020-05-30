@@ -74,7 +74,7 @@ public class RandomPopulationService {
 
     private int generateGaussianCyclesNumber() {
         Random random = new Random();
-        int tmp = (int)(random.nextGaussian() * 9 + 10);
+        int tmp = (int)(random.nextGaussian() * 5 + 10);
         if(tmp < 0) tmp = -tmp;
         if(tmp == 0) tmp = 1;
         return tmp;
