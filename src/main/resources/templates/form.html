@@ -10,7 +10,9 @@
 <div th:insert="header"></div>
 
 <section class="py-5">
-    <div class="container">
+    <div class="container"><br/><br/>
+        <a th:href="@{/normalRandom}" class="btn btn-secondary">Wylosuj wartości z rozkładu normalnego</a>
+        <a th:href="@{/flatRandom}" class="btn btn-secondary">Wylosuj wartości z rozkładu równomiernego</a>
         <h2 class="font-weight-light"><br/>Dane do symulacji</h2>
         <form class='needs-validation' th:object="${population}" method="post" action="#" novalidate>
             <div class="form-row">
